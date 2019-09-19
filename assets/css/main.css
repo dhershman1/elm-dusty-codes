@@ -86,6 +86,25 @@ footer {
   text-align: center;
 }
 
+.lib__name {
+  text-align: center;
+}
+
+.lib__link {
+  color: var(--secondary-font);
+  text-decoration: none;
+}
+
+.lib__link:hover {
+  transition: all 0.3s;
+  color: var(--font);
+}
+
+.lib__description {
+  width: 100%;
+  text-align: center;
+}
+
 .card {
   padding: 0.5rem;
   margin: auto;

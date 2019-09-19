@@ -6,6 +6,7 @@ import Html exposing (..)
 import Html.Attributes exposing (..)
 import Page exposing (Page)
 import Page.Home as Home
+import Page.Libraries as Libraries
 import Page.NotFound as NotFound
 import Route exposing (Route)
 import Url exposing (Url)
@@ -62,6 +63,9 @@ view model =
     case Maybe.withDefault "" model.url.fragment of
         "/home" ->
             Page.view Page.Home Home.view
+
+        "/libraries" ->
+            Page.view Page.Libraries Libraries.view
 
         _ ->
             Page.view Page.Other (NotFound.view model.url)
