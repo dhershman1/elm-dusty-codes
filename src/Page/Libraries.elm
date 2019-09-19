@@ -14,7 +14,7 @@ view =
                 [ h2 [ class "lib__name" ]
                     [ a
                         [ class "lib__link"
-                        , href "https://www.npmjs.com/package/kyanite"
+                        , href "https://github.com/dhershman1/kyanite"
                         , target "_blank"
                         ]
                         [ text "Kyanite" ]
