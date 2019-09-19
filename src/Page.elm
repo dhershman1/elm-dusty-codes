@@ -48,9 +48,7 @@ viewMenu page =
 viewFooter : Html msg
 viewFooter =
     footer []
-        [ div [ class "footer" ]
-            [ text "Copyright 2019 Dustin Hershman" ]
-        ]
+        [ p [] [ text "Copyright 2019 Dustin Hershman" ] ]
 
 
 navbarLink : Page -> Route -> List (Html msg) -> Html msg
