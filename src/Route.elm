@@ -44,7 +44,7 @@ routeToString page =
         pieces =
             case page of
                 Home ->
-                    []
+                    [ "home" ]
 
                 Articles ->
                     [ "articles" ]

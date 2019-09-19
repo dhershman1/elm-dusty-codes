@@ -4,24 +4,16 @@ import Browser
 import Browser.Navigation as Nav
 import Html exposing (..)
 import Html.Attributes exposing (..)
-import Url
-
-
-main : Program () Model Msg
-main =
-    Browser.application
-        { init = init
-        , view = view
-        , update = update
-        , subscriptions = subscriptions
-        , onUrlChange = UrlChanged
-        , onUrlRequest = LinkClicked
-        }
+import Page exposing (Page)
+import Page.Home as Home
+import Page.NotFound as NotFound
+import Route exposing (Route)
+import Url exposing (Url)
 
 
 type alias Model =
     { key : Nav.Key
-    , url : Url.Url
+    , url : Url
     }
 
 
@@ -31,14 +23,14 @@ init flags url key =
 
 
 type Msg
-    = LinkClicked Browser.UrlRequest
-    | UrlChanged Url.Url
+    = ChangedUrl Url
+    | ClickedLink Browser.UrlRequest
 
 
 update : Msg -> Model -> ( Model, Cmd Msg )
 update msg model =
     case msg of
-        LinkClicked urlRequest ->
+        ClickedLink urlRequest ->
             case urlRequest of
                 Browser.Internal url ->
                     ( model, Nav.pushUrl model.key (Url.toString url) )
@@ -46,10 +38,8 @@ update msg model =
                 Browser.External href ->
                     ( model, Nav.load href )
 
-        UrlChanged url ->
-            ( { model | url = url }
-            , Cmd.none
-            )
+        ChangedUrl url ->
+            ( { model | url = url }, Cmd.none )
 
 
 subscriptions : Model -> Sub Msg
@@ -59,20 +49,36 @@ subscriptions _ =
 
 view : Model -> Browser.Document Msg
 view model =
-    { title = "URL Interceptor"
-    , body =
-        [ text "The current URL is: "
-        , b [] [ text (Url.toString model.url) ]
-        , ul []
-            [ viewLink "/home"
-            , viewLink "/portfolio"
-            , viewLink "/articles"
-            , viewLink "/libraries"
-            ]
-        ]
-    }
+    let
+        viewPage page toMsg config =
+            let
+                { title, body } =
+                    Page.view page config
+            in
+            { title = title
+            , body = List.map (Html.map toMsg) body
+            }
+    in
+    case Maybe.withDefault "" model.url.fragment of
+        "/home" ->
+            Page.view Page.Home Home.view
+
+        _ ->
+            Page.view Page.Other (NotFound.view model.url)
 
 
 viewLink : String -> Html msg
 viewLink path =
     li [] [ a [ href path ] [ text path ] ]
+
+
+main : Program () Model Msg
+main =
+    Browser.application
+        { init = init
+        , onUrlChange = ChangedUrl
+        , onUrlRequest = ClickedLink
+        , subscriptions = subscriptions
+        , update = update
+        , view = view
+        }

@@ -6,7 +6,7 @@ import Html.Attributes exposing (alt, class, id, src, tabindex)
 
 view : { title : String, content : Html msg }
 view =
-    { title = "Dusty Codes"
+    { title = "Home"
     , content =
         main_ [ class "grid" ]
             [ h1 [] [ text "About" ]
