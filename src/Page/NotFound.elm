@@ -10,7 +10,7 @@ view : Url -> { title : String, content : Html msg }
 view url =
     { title = "404 Not Found"
     , content =
-        main_ [ class "grid" ]
+        main_ [ class "not-found" ]
             [ h1 [] [ text "404 Not Found" ]
             , b [] [ text (Maybe.withDefault "empty" url.fragment) ]
             , div [ class "err__description" ]

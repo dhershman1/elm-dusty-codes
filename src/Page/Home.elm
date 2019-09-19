@@ -8,7 +8,7 @@ view : { title : String, content : Html msg }
 view =
     { title = "Home"
     , content =
-        main_ [ class "grid" ]
+        main_ [ class "home" ]
             [ h1 [] [ text "About" ]
             , div [ class "about__description" ]
                 [ p [] [ text "Put some text here about me" ] ]

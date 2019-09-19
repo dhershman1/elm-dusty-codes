@@ -3,7 +3,80 @@
   --secondary-font: #dc7c7c;
 }
 
+html {
+  height: 100%;
+}
+
 body {
   color: var(--font);
+  margin: 0;
+  height: 100%;
+}
+
+h1, h2, h3 {
+  color: var(--secondary-font);
+}
+
+.grid {
+  display: grid;
+  grid-template-areas: 'header' 'main' 'footer';
   min-height: 100%;
+}
+
+nav {
+  font-size: 18px;
+  grid-area: header;
+  width: 100%;
+}
+
+.navbar__container {
+  padding: 0.7rem;
+  border-bottom: 1px solid #e8e8e8;
+}
+
+.navbar__brand {
+  font-size: 24px;
+  color: var(--secondary-font);
+  margin-left: 0.7rem;
+  text-decoration: none;
+}
+
+.navbar__brand:hover {
+  transition: all 0.3s;
+  color: var(--font);
+}
+
+.navbar__nav {
+  margin: 0;
+  list-style: none;
+  display: inline;
+}
+
+.navbar__item {
+  display: inline-block;
+}
+
+.navbar__link {
+  color: var(--font);
+  text-decoration: none;
+  padding: 1.5rem;
+}
+
+.navbar__link:hover {
+  transition: all 0.3s;
+  color: var(--secondary-font);
+}
+
+main {
+  display: grid;
+  grid-area: main;
+  height: 100%;
+  justify-content: center;
+}
+
+footer {
+  display: grid;
+  grid-area: footer;
+  align-content: end;
+  justify-content: center;
 }
