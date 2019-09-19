@@ -65,10 +65,9 @@ view model =
         , b [] [ text (Url.toString model.url) ]
         , ul []
             [ viewLink "/home"
-            , viewLink "/profile"
-            , viewLink "/reviews/the-century-of-the-self"
-            , viewLink "/reviews/public-opinion"
-            , viewLink "/reviews/shah-of-shahs"
+            , viewLink "/portfolio"
+            , viewLink "/articles"
+            , viewLink "/libraries"
             ]
         ]
     }

@@ -1,6 +1,8 @@
 # Elm Dusty Codes
 
-Just my portfolio site built using Elm.
+Just my portfolio site built using an Elm front end.
+
+The backend will probably be Node, Racket, or Clojure
 
 It will be different than my other portfolio re writes as each one of these are obviously
 
