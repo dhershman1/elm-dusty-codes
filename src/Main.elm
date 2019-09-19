@@ -67,11 +67,6 @@ view model =
             Page.view Page.Other (NotFound.view model.url)
 
 
-viewLink : String -> Html msg
-viewLink path =
-    li [] [ a [ href path ] [ text path ] ]
-
-
 main : Program () Model Msg
 main =
     Browser.application
