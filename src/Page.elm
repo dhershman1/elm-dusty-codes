@@ -17,7 +17,7 @@ type Page
 view : Page -> { title : String, content : Html msg } -> Document msg
 view page { title, content } =
     { title = title ++ " - Dusty Codes"
-    , body = [ div [ class "grid" ] (viewHeader page :: content :: [ viewFooter ]) ]
+    , body = [ div [ class "wrapper" ] (viewHeader page :: content :: [ viewFooter ]) ]
     }
 
 

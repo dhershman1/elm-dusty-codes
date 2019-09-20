@@ -5,6 +5,7 @@ import Browser.Navigation as Nav
 import Html exposing (..)
 import Html.Attributes exposing (..)
 import Page exposing (Page)
+import Page.Articles as Articles
 import Page.Home as Home
 import Page.Libraries as Libraries
 import Page.NotFound as NotFound
@@ -66,6 +67,9 @@ view model =
 
         "/libraries" ->
             Page.view Page.Libraries Libraries.view
+
+        "/articles" ->
+            Page.view Page.Articles Articles.view
 
         _ ->
             Page.view Page.Other (NotFound.view model.url)
