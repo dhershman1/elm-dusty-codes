@@ -12,6 +12,7 @@ You have to run the app through elm reactor since nav cannot handle the normal f
 
 - Clone this repo
 - `cd` into `elm-dusty-codes`
+- Run `elm make --output=elm.js src/Main.elm`
 - Run `elm reactor`
 - Go to the specified url
 - Click on `index.html`
