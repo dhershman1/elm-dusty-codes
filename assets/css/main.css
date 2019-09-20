@@ -106,8 +106,12 @@ footer {
 }
 
 .card {
+  margin: 0.5rem auto 0 auto;
   padding: 0.5rem;
-  margin: auto;
   width: 50%;
   border: 1px solid #e8e8e8
+}
+
+.card:first-child {
+  margin-top: 0;
 }
