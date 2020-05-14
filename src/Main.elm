@@ -62,6 +62,8 @@ view model =
             }
     in
     case model.url.path of
+        "/" ->
+            Page.view Page.Home Home.view
         "/home" ->
             Page.view Page.Home Home.view
 
