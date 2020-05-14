@@ -61,7 +61,7 @@ view model =
             , body = List.map (Html.map toMsg) body
             }
     in
-    case Maybe.withDefault "" model.url.fragment of
+    case model.url.path of
         "/home" ->
             Page.view Page.Home Home.view
 

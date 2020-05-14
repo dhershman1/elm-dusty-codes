@@ -52,4 +52,4 @@ routeToString page =
                 Libraries ->
                     [ "libraries" ]
     in
-    "#/" ++ String.join "/" pieces
+    "/" ++ String.join "/" pieces
