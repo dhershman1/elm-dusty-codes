@@ -1,7 +1,7 @@
 module Page.NotFound exposing (view)
 
-import Html exposing (Html, b, div, h1, img, main_, p, text)
-import Html.Attributes exposing (alt, class, id, src, tabindex)
+import Html exposing (Html, b, div, h1, main_, p, text, a)
+import Html.Attributes exposing (alt, class, id, href, tabindex)
 import Route
 import Url exposing (Url)
 
@@ -12,8 +12,9 @@ view url =
     , content =
         main_ [ class "not-found" ]
             [ h1 [] [ text "404 Not Found" ]
-            , b [] [ text (Maybe.withDefault "empty" url.fragment) ]
+            , b [] [ text url.path ]
             , div [ class "err__description" ]
-                [ p [] [ text "Looks like that wasn't found friend!" ] ]
+                [ p [] [ text "Looks like that wasn't found friend!" ]
+                , a [ Route.href Route.Home ] [ text "Go Home" ] ]
             ]
     }
