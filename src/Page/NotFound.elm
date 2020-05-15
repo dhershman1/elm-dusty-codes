@@ -1,7 +1,7 @@
 module Page.NotFound exposing (view)
 
 import Html exposing (Html, b, div, h1, main_, p, text, a)
-import Html.Attributes exposing (alt, class, id, href, tabindex)
+import Html.Attributes exposing (class, href)
 import Route
 import Url exposing (Url)
 
