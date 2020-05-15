@@ -17,8 +17,28 @@ type Page
 view : Page -> { title : String, content : Html msg } -> Document msg
 view page { title, content } =
     { title = title ++ " - Dusty Codes"
-    , body = [ div [ class "wrapper" ] (viewHeader page :: content :: [ viewFooter ]) ]
+    , body = [ div [ class "wrapper" ] (viewHeader page :: [ content, viewFooter ]) ]
     }
+
+isActive : Page -> Route -> Bool
+isActive page route =
+    case ( page, route ) of
+        ( Home, Route.Home ) ->
+            True
+
+        ( Libraries, Route.Libraries ) ->
+            True
+
+        ( Articles, Route.Articles ) ->
+            True
+
+        _ ->
+            False
+
+navbarLink : Page -> Route -> List (Html msg) -> Html msg
+navbarLink page route linkContent =
+    li [ class "navbar__item" ]
+        [ a [ classList [("navbar__link", True), ("navbar__link--active", isActive page route)], Route.href route ] linkContent ]
 
 
 viewHeader : Page -> Html msg
@@ -49,25 +69,3 @@ viewFooter : Html msg
 viewFooter =
     footer []
         [ p [] [ text "Copyright 2019 Dustin Hershman" ] ]
-
-
-navbarLink : Page -> Route -> List (Html msg) -> Html msg
-navbarLink page route linkContent =
-    li [ classList [ ( "navbar__item", True ), ( "navbar__item--active", isActive page route ) ] ]
-        [ a [ class "navbar__link", Route.href route ] linkContent ]
-
-
-isActive : Page -> Route -> Bool
-isActive page route =
-    case ( page, route ) of
-        ( Home, Route.Home ) ->
-            True
-
-        ( Libraries, Route.Libraries ) ->
-            True
-
-        ( Articles, Route.Articles ) ->
-            True
-
-        _ ->
-            False

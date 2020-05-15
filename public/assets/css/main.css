@@ -67,6 +67,10 @@ nav {
   color: var(--secondary-font);
 }
 
+.navbar__link--active {
+  color: var(--secondary-light);
+}
+
 main {
   height: 100%;
   width: 75%;
