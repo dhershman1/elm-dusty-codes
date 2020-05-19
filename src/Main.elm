@@ -2,14 +2,10 @@ module Main exposing (main)
 
 import Browser
 import Browser.Navigation as Nav
-import Html exposing (..)
-import Html.Attributes exposing (..)
-import Page exposing (Page)
 import Page.Articles as Articles
 import Page.Home as Home
 import Page.Libraries as Libraries
 import Page.NotFound as NotFound
-import Route exposing (Route)
 import Url exposing (Url)
 
 
@@ -20,7 +16,7 @@ type alias Model =
 
 
 init : () -> Url.Url -> Nav.Key -> ( Model, Cmd Msg )
-init flags url key =
+init _ url key =
     ( Model key url, Cmd.none )
 
 
@@ -51,16 +47,6 @@ subscriptions _ =
 
 view : Model -> Browser.Document Msg
 view model =
-    let
-        viewPage page toMsg config =
-            let
-                { title, body } =
-                    Page.view page config
-            in
-            { title = title
-            , body = List.map (Html.map toMsg) body
-            }
-    in
     case model.url.path of
         "/" ->
             Page.view Page.Home Home.view

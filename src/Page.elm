@@ -1,9 +1,8 @@
 module Page exposing (Page(..), view)
 
 import Browser exposing (Document)
-import Html exposing (Html, a, button, div, footer, i, img, li, nav, p, span, text, ul)
-import Html.Attributes exposing (class, classList, href, style)
-import Html.Events exposing (onClick)
+import Html exposing (Html, a, div, footer, li, nav, p, text, ul)
+import Html.Attributes exposing (class, classList, href)
 import Route exposing (Route)
 
 
@@ -17,7 +16,7 @@ type Page
 view : Page -> { title : String, content : Html msg } -> Document msg
 view page { title, content } =
     { title = title ++ " - Dusty Codes"
-    , body = [ div [ class "wrapper" ] (viewHeader page :: [ content, viewFooter ]) ]
+    , body = [ div [ class "wrapper" ] [ viewHeader page,  content, viewFooter ] ]
     }
 
 isActive : Page -> Route -> Bool
